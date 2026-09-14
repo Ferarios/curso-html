@@ -14,10 +14,8 @@ jobs:
           node-version: 24
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
-      - name: Install deps
-        run: npm install
       - name: Deploy
-        run: npm run deploy:prod
+        run: netlify deploy --prod --dir=. --site=$NETLIFY_SITE_ID
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_PAT }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_PROJECT_ID }}
